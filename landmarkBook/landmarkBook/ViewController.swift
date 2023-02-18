@@ -14,6 +14,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var landmarkNames = [String]()
     var landmarkImages = [UIImage]()
     
+    var chosenLandmarkName = ""
+    var chosenLandmarkImage = UIImage()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        bu da bir hucre secildiginde ne yapim diyen fonksiyon.
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate  = self
@@ -50,6 +56,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //content.secondaryText = "Test"
         cell.contentConfiguration = content
         return cell
+    }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC"{
+            let destionationVC = segue.destination as! DetailsVC
+          
+        }
     }
 
 }
